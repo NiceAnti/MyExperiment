@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>百度注册页面</title>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+<div class="center"><img src="images/header1.jpg" /></div>
+<div class="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <form action="./success.html"  name="myform" onsubmit=" return s()">
+  <tr>
+    <td class="left">用户名：</td>
+    <td><input id="user" type="text"  class="inputs" onkeyup="checkUser()"/><div id="userId" class="red"></div></td>
+  </tr>
+   <tr>
+    <td class="left">密码：</td>
+    <td><input id="pwd" type="password"  class="inputs" onkeyup="checkPwd()"/><div id="pwdId" class="red"></div></td>
+  <tr>
+    <td class="left">确认密码：</td>
+    <td><input id="repwd" type="password"  class="inputs"  onblur="checkRePwd()"/><div id="repwdId" class="red"></div></td>
+  </tr>
+  <tr>
+   <tr>
+    <td class="left">性别：</td>
+    <td><div style="float:left;"><input name="sex" type="radio" value="男" checked  />男 <input name="sex" type="radio" value="女" />女</div>
+    <div id="sexId" class="red"></div></td>
+  </tr>
+   <tr>
+    <td class="left">电子邮件地址</td>
+    <td><input id="email" type="text"  class="inputs" onkeyup="checkEmail()"/><div id="emailId" class="red"></div></td>
+  </tr>
+   <tr>
+    <td class="left">出生日期：</td>
+    <td><select id="year">
+       </select>年
+    <select id="month">
+      </select>月
+    <select id="day">
+    </select>日</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="sub" type="submit" value="注册" /> <input name="cancel" type="reset" value="清除" /></td>
+  </tr>
+  </form>
+</table>
+</div>
+
+<script>
+	let u = false;
+	const user = document.getElementById('user');
+	const userId = document.getElementById('userId');
+	const checkUser = ()=>{
+		const reg = /^[a-zA-Z]+$/;
+		if(!reg.test(user.value.trim())){
+			userId.innerText = '用户名不合法，输入英文字符';
+			u = false;
+		}else{
+			userId.innerText = '';
+			u=true;
+		}
+	}
+	
+	let p = false;
+	const pwd = document.getElementById('pwd');
+	const pwdId = document.getElementById('pwdId');
+	const checkPwd = ()=>{
+		const reg = /^[a-zA-Z]+$/;
+		if(!reg.test(pwd.value.trim())){
+			pwdId.innerText = '用户名不合法，输入英文字符';
+			p=false;
+		}else{
+			pwdId.innerText = '';
+			p=true;
+		}
+	}
+	
+	//这个要用失去焦点事件控制
+	let rp = false;
+	const repwd = document.getElementById('repwd');
+	const repwdId = document.getElementById('repwdId');
+	const checkRePwd = ()=>{
+		if(repwd.value.trim() != pwd.value.trim()){
+			repwdId.innerText = '两次密码输入不匹配';
+			rp= false;
+		}else{
+			repwdId.innerText = '';
+			rp = true;
+		}
+		
+	}
+	
+
+	let e = false;
+	const email = document.getElementById('email');
+	const emailId = document.getElementById('emailId');
+	const checkEmail = ()=>{
+		const reg= /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;;
+		if(!reg.test(email.value.trim())){
+			emailId.innerText = '邮箱格式错误';
+			e = false;
+		}else{
+			emailId.innerText = '';
+			e= true;
+		}
+	}
+	
+	
+	const y = document.getElementById('year');
+	const m = document.getElementById('month');
+	const d = document.getElementById('day');
+	
+	const date = new Date();
+	for(let i=1900;i<=date.getFullYear();i++){
+		y.append(new Option(i,i));
+	}
+	
+	for(let i=1;i<=12;i++){
+		m.append(new Option(i,i));
+	}
+	
+	for(let i=1;i<=31;i++){
+		d.append(new Option(i,i));
+	}
+	
+	const s = ()=>{
+		if(u && p && rp && e){
+			const f = document.getElementsByName("myform");
+			return true;
+		}
+		alert('请输入完整的数据');
+		return false;
+	}
+	
+</script>
+</body>
+</html>

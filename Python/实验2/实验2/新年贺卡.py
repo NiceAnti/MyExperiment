@@ -1,0 +1,7 @@
+p1 = input('请输入收卡人:')
+p2 = input('请输入送卡人:')
+print('########################')
+print(p1)
+print('Happy New Year to you.')
+print('                yours ',p2)
+print('########################')

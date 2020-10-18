@@ -1,0 +1,4 @@
+create type cnoDomain from char(10);  --创建自定义域cnoDomain
+alter table ex2.course alter column cno cnoDomain;  --将cno改为cnoDomain类型
+
+sp_columns course --查看表结构

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input name="ic" type="checkbox" value="旅游"/> 旅游 <br />
+		<input name="ic" type="checkbox" value="音乐"/> 音乐<br />
+		<input name="ic" type="checkbox" value="运动"/> 运动<br />
+		<br />
+		<button onclick="selectAll()">全选</button>
+		<button onclick="unSelectAll()">全不选</button>
+		<button onclick="showInfo()">显示信息</button>
+		
+		<script>
+		     function selectAll(){
+                var groupC= document.getElementsByName("ic");
+                for(var i=0;i<groupC.length;i++){
+                groupC[i].checked=true;
+              }
+             }
+		     function unSelectAll(){
+                var groupC= document.getElementsByName("ic");
+                for(var i=0;i<groupC.length;i++){
+                groupC[i].checked=false;
+              }
+		     }
+		     function showInfo(){
+                var groupC= document.getElementsByName("ic");
+                for(var i=0;i<groupC.length;i++){
+                if(groupC[i].checked){
+                	alert(groupC[i].value);
+                }
+              }
+		     }
+		</script>
+	</body>
+</html>

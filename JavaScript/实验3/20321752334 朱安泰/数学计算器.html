@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数学计算器</title>
+		<style>
+			button{
+				margin: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="text" name="context" id="context" value="" disabled="true"/>
+			<div id='btn'>
+				<script>
+					for(let i=1;i<=9;i++){
+						let btn = document.getElementById('btn');
+						btn.innerHTML += `<button style="height: 40px;width: 40px;"  value='${i}' onclick='fn1(this.value)'>${i}</button>`;
+						if(i%4==0){
+							btn.innerHTML +='</br>';
+						}
+					}
+					
+					const input = document.getElementById('context');
+					function fn1(v){
+						input.value +=v;
+						if(v=='='){
+							input.value=eval(input.value);
+						}
+					}
+					
+					function fn2(v){
+						const res = eval(input.value);
+						switch(v){
+							case '=':
+								input.value = eval(res);
+								break;
+							case'C':
+								input.value='';
+								break;
+							case '+':
+							case '-':
+							case '*':
+							case '/':
+								input.value += v;
+								break;
+							case 'pi':
+								input.value = Math.PI;
+								break;
+							case 'e':
+								input.value=Math.E;
+								break;
+							case 'sqrt':
+								input.value = Math.sqrt(res);
+								break;
+							case 'sin':
+								input.value = Math.sin(res);
+								break;
+							case 'cos':
+								input.value = Math.cos(res);
+								break;
+							case 'tan':
+								input.value = Math.tan(res);
+								break;
+							case 'asin':
+								input.value = Math.asin(res);
+								break;
+							case '1/x':
+								input.value = Math.abs(res);
+							
+								
+						}
+					}
+
+				</script>
+				<button value="0" style="height: 40px;width: 40px;" onclick="fn1(this.value)">0</button>
+				<button value="=" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">=</button>
+				<button value="C" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">C</button>
+				<br/>
+				<button value="+" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">+</button>
+				<button value="-" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">-</button>
+				<button value="*" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">*</button>
+				<button value="/" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">/</button>
+				<br />
+				<button value="pi" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">pi</button>
+				<button value="e" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">e</button>
+				<button value="sqrt" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">sqrt</button>
+				<button value="1/x" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">1/x</button>
+				<br />
+				<button value="sin" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">sin</button>
+				<button value="cos" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">cos</button>
+				<button value="tan" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">tan</button>
+				<button value="asin" style=" height: 40px;width: 40px;" onclick="fn2(this.value)">asin</button>
+				
+			</div>
+		</div>
+	</body>
+</html>
