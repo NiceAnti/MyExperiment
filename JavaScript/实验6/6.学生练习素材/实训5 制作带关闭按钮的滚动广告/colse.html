@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>带关闭按钮的滚动广告</title>
+		<style type="text/css">
+			#main {
+				text-align: center;
+			}
+
+			#float {
+				position: absolute;
+				left: 30px;
+				top: 60px;
+				z-index: 1;
+			}
+
+			#close {
+				position: absolute;
+				top: 60px;
+				left: 134px;
+				z-index: 2;
+				cursor: hand;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="close"><img src="images/close.jpg"></div>
+		<div id="float"><img src="images/advpic.jpg"></div>
+		<div id="main"><img src="images/contentpic.jpg"></div>
+
+		<script>
+			let close = document.getElementById('close');
+			let main = document.getElementById('main');
+			let f = document.getElementById('float');
+			window.onload = function() {
+
+				var n = 20; //top值
+				window.onscroll = function() {
+					f.style.top = (document.body.scrollTop || document.documentElement.scrollTop) + n + 'px';
+					close.style.top = (document.body.scrollTop || document.documentElement.scrollTop) + n + 'px';
+				}
+
+				window.onresize = function() {
+					f.style.top = (document.body.scrollTop || document.documentElement.scrollTop) + n + 'px';
+					close.style.top = (document.body.scrollTop || document.documentElement.scrollTop) + n + 'px';
+				}
+
+			}
+
+			close.onclick = function() {
+				f.style.display = 'none';
+				close.style.display = 'none';
+			}
+		</script>
+	</body>
+</html>
